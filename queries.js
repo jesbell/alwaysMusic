@@ -28,6 +28,7 @@ async function agregarNuevo(rut, nombre, curso, nivel){
     const consulta = "INSERT INTO estudiantes (Rut, Nombre, Curso, Nivel) VALUES ($1, $2, $3, $4)";
     const values = [rut, nombre, curso, nivel]
 
+    // Ejecutamos la consulta SQL
     await client.query(consulta, values);
 
     console.log(`Estudiante ${nombre} agregado con éxito.`); 
@@ -49,9 +50,11 @@ async function editarEstudiante(rut, nombre, curso, nivel){
 
     const consulta = "UPDATE estudiantes SET nombre = $2, curso = $3, nivel = $4 WHERE rut = $1";
     const values = [rut, nombre, curso, nivel]
-
+    
+    // Ejecutamos la consulta SQL
     const resultado = await client.query(consulta, values);
 
+    // mostrar resultados
     if(resultado.rowCount > 0){
       console.log(`Estudiante ${nombre} editado con éxito.`);
     }
@@ -76,8 +79,10 @@ async function consultarporRut(rut){
     const consulta = "SELECT * FROM estudiantes WHERE rut = $1";
     const values = [rut]
 
+    // Ejecutamos la consulta SQL
     const resultado = await client.query(consulta, values);
-
+    
+    // mostramos resultados
     if(resultado.rowCount > 0){
       console.log(resultado.rows);
     }
@@ -101,7 +106,8 @@ async function eliminarEstudiante(rut){
 
     const consulta = "DELETE FROM estudiantes WHERE rut = $1";
     const values = [rut]
-
+    
+    // Ejecutamos la consulta SQL
     const resultado = await client.query(consulta, values);
 
     if(resultado.rowCount > 0){

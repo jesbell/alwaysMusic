@@ -14,7 +14,7 @@ const config = {
   password: pass_usuario,
   max: 20,
   min: 2,
-  idleTimeoutMillis: 10000,
+  idleTimeoutMillis: 3000,
   connectionTimeoutMillis: 2000,
 };
 
