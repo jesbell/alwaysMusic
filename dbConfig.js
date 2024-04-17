@@ -1,6 +1,7 @@
 // Importamos la librería de PostgreSQL
 const { Pool } = require("pg");
 
+// Agrega tus datos de conexión 
 const usuario_name = "";
 const pass_usuario = "";
 
