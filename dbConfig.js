@@ -8,7 +8,7 @@ const pass_usuario = "";
 const config = {
   host: "localhost",
   port: 5432,
-  database: "users",
+  database: "alwaysmusic",
   user: usuario_name,
   password: pass_usuario,
   max: 20,
