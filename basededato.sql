@@ -3,7 +3,7 @@
 
 
 -- creación de la bd
-CREATE DATABASE alwaysmusic 
+CREATE DATABASE alwaysmusic;
 
 
 -- Creación de la tabla 
