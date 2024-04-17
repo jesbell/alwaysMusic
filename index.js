@@ -1,4 +1,4 @@
-const { consultaSQL, agregarNuevo, editarEstudiante, consultarporRut /* , insertUser, deleteUser, updateUser, */ } = require("./queries");
+const { consultaSQL, agregarNuevo, editarEstudiante, consultarporRut, eliminarEstudiante } = require("./queries");
 
 const args = process.argv.slice(2);
 const accion = args[0];
@@ -20,12 +20,12 @@ else if(args.length === 5){
     }   
 }
 else if(args.length === 2){
+    const rut = args[1];
     if(accion == "rut"){
-        const rut = args[1];
         consultarporRut(rut);
     }
     else if(accion == "eliminar"){
-        //eliminarEstudiante(rut);        
+        eliminarEstudiante(rut);        
     }
 }
 else{

@@ -93,32 +93,31 @@ async function consultarporRut(rut){
   }
 }
 
+// eliminar estudiante por rut
+async function eliminarEstudiante(rut){
+  // Obtenemos una conexión de la pool
+  const client = await pool.connect();
+  try {
 
-// Función para insertar un usuario
-/* const insertUser = async () => {
-  const text = "INSERT INTO users(name, mail) VALUES($1, $2)";
-  const values = ["Nombre 4", "email4@email.com"];
+    const consulta = "DELETE FROM estudiantes WHERE rut = $1";
+    const values = [rut]
 
-  const response = await pool.query(text, values);
-  console.log(response);
-}; */
+    const resultado = await client.query(consulta, values);
 
-// Función para eliminar un usuario
-/* const deleteUser = async () => {
-  const text = "DELETE FROM users WHERE id = $1";
-  const values = [9];
+    if(resultado.rowCount > 0){
+      console.log(`Registro de estudiante con rut ${rut} eliminado` );
+    }
+    else{
+      console.log(`No se encontró un estudiante con el RUT ${rut}.`);
+    }
+  } catch (error) {
+    console.error("Error al ejecutar la consulta:", error); 
+  }
+  finally {
+    // Liberamos la conexión
+    client.release();
+  }
+}
 
-  const response = await pool.query(text, values);
-  console.log(response);
-}; */
 
-// Función para actualizar un usuario
-/* const updateUser = async () => {
-  const text = "UPDATE users SET name = $1, mail = $2 WHERE id = $3";
-  const values = ["Nombre 5", "email5@email.com"];
-
-  const response = await pool.query(text, values);
-  console.log(response);
-}; */
-
-module.exports = { consultaSQL, agregarNuevo, editarEstudiante, consultarporRut /* , insertUser, deleteUser, updateUser  */};
+module.exports = { consultaSQL, agregarNuevo, editarEstudiante, consultarporRut, eliminarEstudiante };
