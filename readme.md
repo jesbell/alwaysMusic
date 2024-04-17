@@ -3,7 +3,7 @@ Este desafío es parte del curso de Desafio Latam, Desarrollo de aplicaciones Fu
 
 
 # Descripción del desafío
-En este desafío deberás desarrollar una aplicación en Node que realice consultas a PostgreSQL con el paquete “pg” para: Agregar un nuevo estudiante, Consultar los estudiantes registrados, Consultar estudiante por rut, Actualizar la información de un estudiante y Eliminar el registro de un estudiante. Ya que el caso se trata de un proceso de desarrollo, la interacción la debes realizar con argumentos por la línea de comandos
+En este desafío deberás desarrollar una aplicación en Node que realice consultas a PostgreSQL con el paquete “pg” para: Agregar un nuevo estudiante, Consultar los estudiantes registrados, Consultar estudiante por rut, Actualizar la información de un estudiante y Eliminar el registro de un estudiante. Ya que el caso se trata de un proceso de desarrollo, la interacción se debe realizar con argumentos por la línea de comandos
 
 
 # Visuales
@@ -25,7 +25,7 @@ Estas instrucciones te guiarán para obtener una copia de este proyecto en funci
 Lista de software y herramientas, incluyendo versiones, que necesitas para instalar y ejecutar este proyecto:
 
 - Sistema Operativo: puedes usar Ubuntu o Windows 10 o superior.
-- Se trabajo con Javascript, html.
+- Se trabajo con Javascript.
 - Se utilizo pg.
 
 ### Instalación 🔧
@@ -33,7 +33,7 @@ Lista de software y herramientas, incluyendo versiones, que necesitas para insta
 Para utilizar este proyecto debes clonar este repositorio en tu máquina, utilizando git.
 
 ```
-git clone git@github.com:jesbell/welcomeWorld_.git
+git clone git@github.com:jesbell/alwaysMusic.git
 ```
 
 Una vez allí puedes abrir el proyecto donde te sea más comodo. Pero dentro de la carpeta del proyecto deberas realizar las instalación de las dependencias, con el siguiente comando.
@@ -52,7 +52,7 @@ CREATE TABLE estudiantes (
 ); 
 ```
 
-El siguiente paso es hacer la conexión en a la base de datos. En el archivo dbConfig.js debes agregar tu usuario y contraseña, y el nombre de la base de datos que creaste si la creaste con un nombre distinto.
+El siguiente paso es hacer la conexión a la base de datos. En el archivo dbConfig.js debes agregar tu usuario y contraseña, y el nombre de la base de datos que creaste si la creaste con un nombre distinto.
 ```
 // inserta tus datos
 const usuario_name = "";
@@ -69,7 +69,8 @@ const config = {
 };
 ```
 
-En el archivo basededato.sql, puedes encontrar también unos insert para que tengas datos para comprobar la primera consulta. En consola ingresa:
+En el archivo basededato.sql, puedes encontrar también unos insert para que tengas datos para comprobar la primera consulta. 
+Si realizas esos insert, entonces en tu consola ingresa lo siguiente:
 
 ```
 node index.js consulta
@@ -89,7 +90,7 @@ node index.js editar "bryan May" "19.456.785-8" guitarra 9
 ```
 Para consultar por rut:
 ```
-node index.js rut "98765432-1"
+node index.js rut "98.765.432-1"
 ```
 Para eliminar estudiante por rut:
 ```
@@ -99,7 +100,7 @@ node index.js eliminar "19.356.775-k"
 
 ## Soporte
 
-Si tienes algún problema o sugerencia, por favor abre un problema [aquí](https://github.com/jesbell/welcomeWorld_/issues).
+Si tienes algún problema o sugerencia, por favor abre un problema [aquí](https://github.com/jesbell/alwaysMusic/issues).
 
 ## Versionado  📌
 
