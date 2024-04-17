@@ -67,6 +67,32 @@ async function editarEstudiante(rut, nombre, curso, nivel){
   }
 }
 
+// Consultar estudiante por rut
+async function consultarporRut(rut){
+  // Obtenemos una conexión de la pool
+  const client = await pool.connect();
+  try {
+
+    const consulta = "SELECT * FROM estudiantes WHERE rut = $1";
+    const values = [rut]
+
+    const resultado = await client.query(consulta, values);
+
+    if(resultado.rowCount > 0){
+      console.log(resultado.rows);
+    }
+    else{
+      console.log(`No se encontró un estudiante con el RUT ${rut}.`);
+    }
+  } catch (error) {
+    console.error("Error al ejecutar la consulta:", error); 
+  }
+  finally {
+    // Liberamos la conexión
+    client.release();
+  }
+}
+
 
 // Función para insertar un usuario
 /* const insertUser = async () => {
@@ -95,4 +121,4 @@ async function editarEstudiante(rut, nombre, curso, nivel){
   console.log(response);
 }; */
 
-module.exports = { consultaSQL, agregarNuevo, editarEstudiante /* , insertUser, deleteUser, updateUser  */};
+module.exports = { consultaSQL, agregarNuevo, editarEstudiante, consultarporRut /* , insertUser, deleteUser, updateUser  */};
