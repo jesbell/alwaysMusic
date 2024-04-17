@@ -17,6 +17,6 @@ CREATE TABLE estudiantes (
 -- Datos ejemplos que se insertaron
 
 INSERT INTO estudiantes (Rut, Nombre, Curso, Nivel) 
-VALUES ('12345678-9', 'Juan Pérez', 'Guitarra', 1),
-       ('98765432-1', 'María López', 'Piano', 3);
+VALUES ('12.345.678-9', 'Juan Pérez', 'Guitarra', 1),
+       ('98.765.432-1', 'María López', 'Piano', 3);
 
