@@ -1,4 +1,4 @@
-const { consultaSQL, agregarNuevo /* , insertUser, deleteUser, updateUser, */ } = require("./queries");
+const { consultaSQL, agregarNuevo, editarEstudiante /* , insertUser, deleteUser, updateUser, */ } = require("./queries");
 
 const args = process.argv.slice(2);
 const accion = args[0];
@@ -15,8 +15,8 @@ else if(args.length === 5){
     if(accion == "nuevo"){
         agregarNuevo(rut, nombre, curso, nivel);
     }
-    else{
-        //editarEstudiante(rut, nombre, curso, nivel);
+    else if(accion == "editar"){
+        editarEstudiante(rut, nombre, curso, nivel);
     }
     
 

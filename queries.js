@@ -41,6 +41,33 @@ async function agregarNuevo(rut, nombre, curso, nivel){
   }
 }
 
+// Editar estudiante
+async function editarEstudiante(rut, nombre, curso, nivel){
+  // Obtenemos una conexión de la pool
+  const client = await pool.connect();
+  try {
+
+    const consulta = "UPDATE estudiantes SET nombre = $2, curso = $3, nivel = $4 WHERE rut = $1";
+    const values = [rut, nombre, curso, nivel]
+
+    const resultado = await client.query(consulta, values);
+
+    if(resultado.rowCount > 0){
+      console.log(`Estudiante ${nombre} editado con éxito.`);
+    }
+    else{
+      console.log(`No se encontró un estudiante con el RUT ${rut}.`);
+    }
+  } catch (error) {
+    console.error("Error al ejecutar la consulta:", error); 
+  }
+  finally {
+    // Liberamos la conexión
+    client.release();
+  }
+}
+
+
 // Función para insertar un usuario
 /* const insertUser = async () => {
   const text = "INSERT INTO users(name, mail) VALUES($1, $2)";
@@ -68,4 +95,4 @@ async function agregarNuevo(rut, nombre, curso, nivel){
   console.log(response);
 }; */
 
-module.exports = { consultaSQL, agregarNuevo /* , insertUser, deleteUser, updateUser  */};
+module.exports = { consultaSQL, agregarNuevo, editarEstudiante /* , insertUser, deleteUser, updateUser  */};
