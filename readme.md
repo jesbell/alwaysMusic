@@ -12,7 +12,7 @@ Este proyecto se puede visualizar en el terminal, para este caso debe ingresar l
 
 | Visualización | 
 | --- | 
-| ![Visualización](/assets/)|  
+| ![Visualización](/assets/visual_1.png)|  
 
 
 
