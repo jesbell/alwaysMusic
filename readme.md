@@ -10,9 +10,9 @@ En este desafío deberás desarrollar una aplicación en Node que realice consul
 
 Este proyecto se puede visualizar en el terminal, para este caso debe ingresar los comandos para cada instrucción: consulta, editar, eliminar, rut, nuevo. Son las 5 acciones que nos permite realizar este proyecto. 
 
-| Visualización | 
-| --- | 
-| ![Visualización](/assets/visual_1.png)|  
+| Visualización | Cambios hechos, formato arreglo
+| --- | --- |
+| ![Visualización](/assets/visual_1.png)| ![Visualización_dos](/assets/visual_2.png) |
 
 
 
