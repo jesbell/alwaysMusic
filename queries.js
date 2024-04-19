@@ -4,11 +4,14 @@ const pool = require("./dbConfig");
 async function consultaSQL() {
   // Obtenemos una conexión de la pool
   const client = await pool.connect();
+  const query = {
+    rowMode: "array",
+    text: "SELECT * FROM estudiantes",
+    };   
 
   try {
     // Ejecutamos la consulta SQL
-    const result = await client.query("SELECT * FROM estudiantes");
-
+    const result = await client.query(query);
     // Mostramos los resultados
     console.log(result.rows);
   } catch (error) {
@@ -23,14 +26,14 @@ async function consultaSQL() {
 async function agregarNuevo(rut, nombre, curso, nivel){
   // Obtenemos una conexión de la pool
   const client = await pool.connect();
+  const query = {
+    text: "INSERT INTO estudiantes (Rut, Nombre, Curso, Nivel) VALUES ($1, $2, $3, $4)",
+    values: [rut, nombre, curso, nivel],
+  };   
+
   try {
-
-    const consulta = "INSERT INTO estudiantes (Rut, Nombre, Curso, Nivel) VALUES ($1, $2, $3, $4)";
-    const values = [rut, nombre, curso, nivel]
-
     // Ejecutamos la consulta SQL
-    await client.query(consulta, values);
-
+    await client.query(query);
     console.log(`Estudiante ${nombre} agregado con éxito.`); 
 
   } catch (error) {
@@ -46,13 +49,14 @@ async function agregarNuevo(rut, nombre, curso, nivel){
 async function editarEstudiante(rut, nombre, curso, nivel){
   // Obtenemos una conexión de la pool
   const client = await pool.connect();
-  try {
+  const query = {
+    text: "UPDATE estudiantes SET nombre = $2, curso = $3, nivel = $4 WHERE rut = $1",
+    values: [rut, nombre, curso, nivel],
+  };
 
-    const consulta = "UPDATE estudiantes SET nombre = $2, curso = $3, nivel = $4 WHERE rut = $1";
-    const values = [rut, nombre, curso, nivel]
-    
+  try {    
     // Ejecutamos la consulta SQL
-    const resultado = await client.query(consulta, values);
+    const resultado = await client.query(query);
 
     // mostrar resultados
     if(resultado.rowCount > 0){
@@ -74,13 +78,14 @@ async function editarEstudiante(rut, nombre, curso, nivel){
 async function consultarporRut(rut){
   // Obtenemos una conexión de la pool
   const client = await pool.connect();
+  const query = {
+    rowMode: "array",
+    text: "SELECT * FROM estudiantes WHERE rut = $1",
+    values: [rut],
+  };
   try {
-
-    const consulta = "SELECT * FROM estudiantes WHERE rut = $1";
-    const values = [rut]
-
     // Ejecutamos la consulta SQL
-    const resultado = await client.query(consulta, values);
+    const resultado = await client.query(query);
     
     // mostramos resultados
     if(resultado.rowCount > 0){
@@ -102,13 +107,13 @@ async function consultarporRut(rut){
 async function eliminarEstudiante(rut){
   // Obtenemos una conexión de la pool
   const client = await pool.connect();
-  try {
-
-    const consulta = "DELETE FROM estudiantes WHERE rut = $1";
-    const values = [rut]
-    
+  const sqlquery = {
+    text: "DELETE FROM estudiantes WHERE rut = $1",
+    values: [rut],
+  };
+  try {    
     // Ejecutamos la consulta SQL
-    const resultado = await client.query(consulta, values);
+    const resultado = await client.query(sqlquery);
 
     if(resultado.rowCount > 0){
       console.log(`Registro de estudiante con rut ${rut} eliminado` );
